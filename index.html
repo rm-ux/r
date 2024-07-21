@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiaomi Redmi 12 | English</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Stay updated with the latest tutorials and join our community for Xiaomi Redmi 12.">
+    <style>
+        :root {
+            --primary-bg-color: #1a1a1a;
+            --secondary-bg-color: #333;
+            --text-color: #fff;
+            --button-bg-color: #0088cc;
+            --button-hover-bg-color: #0077b5;
+            --highlight-color: #ff6347;
+            --container-padding: 20px;
+            --border-radius: 10px;
+            --box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            --transition: 0.3s ease-in-out;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--primary-bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: var(--container-padding);
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background-color: var(--secondary-bg-color);
+            padding: var(--container-padding);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            animation: fadeIn 1s var(--transition);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 1em;
+        }
+
+        .join-telegram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            animation: bounce 2s infinite;
+            box-shadow: var(--box-shadow);
+        }
+
+        .join-button {
+            background-color: var(--button-bg-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 700;
+            transition: background-color var(--transition);
+            cursor: pointer;
+        }
+
+        .join-button:hover {
+            background-color: var(--button-hover-bg-color);
+        }
+
+        .latest-release, .resources {
+            margin: 20px 0;
+        }
+
+        .latest-release span, .resources a {
+            font-weight: 700;
+        }
+
+        .resources a, .latest-release a {
+            color: var(--text-color);
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .resources a:hover, .latest-release a:hover {
+            color: var(--highlight-color);
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .join-button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+
+            .icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .resources a, .latest-release a {
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <h1>Xiaomi Redmi 12 | English</h1>
+        <p>Stay updated with the latest tutorials and join our community.</p>
+        <div class="join-telegram">
+            <img src="https://i.ibb.co/fMkmXN6/IMG-20240721-015406-295.jpg" alt="Telegram Icon" class="icon">
+            <a href="https://t.me/XiaomiRedmi12eng" class="join-button">Join our Telegram</a>
+        </div>
+        <div class="latest-release">
+            <p>Latest GitHub Activity: <a id="latest-repo" href="#" target="_blank"><span id="release-info">Loading...</span></a></p>
+        </div>
+        <div class="resources">
+            <p>
+                <a href="https://github.com/topjohnwu/Magisk" target="_blank">Magisk</a> |
+                <a href="https://twrp.me/" target="_blank">TWRP</a> |
+                <a href="https://kernel.org" target="_blank">Kernels</a>
+            </p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/particles.json', function() {
+            console.log('particles.js loaded - callback');
+        });
+
+        async function fetchLatestUserActivity() {
+            const releaseInfo = document.getElementById('release-info');
+            try {
+                const response = await fetch('https://api.github.com/users/topjohnwu/events/public');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                const latestEvent = data.find(event => event.type === 'PushEvent' || event.type === 'ReleaseEvent');
+                if (latestEvent) {
+                    const repoName = latestEvent.repo.name;
+                    const repoUrl = `https://github.com/${repoName}`;
+                    const latestRepo = document.getElementById('latest-repo');
+                    releaseInfo.textContent = `${repoName} - ${latestEvent.payload.commits ? 'Updated' : 'Released'} on ${new Date(latestEvent.created_at).toLocaleDateString()}`;
+                    latestRepo.href = `${repoUrl}/releases`; // Link to the releases page of the repo
+                } else {
+                    releaseInfo.textContent = 'No recent updates found';
+                }
+            } catch (error) {
+                releaseInfo.textContent = 'Error fetching data';
+                console.error('Fetch error:', error);
+            }
+        }
+
+        fetchLatestUserActivity();
+    </script>
+</body>
+  </html>
